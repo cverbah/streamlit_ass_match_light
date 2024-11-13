@@ -88,6 +88,7 @@ url = f'https://adminreposgeti--assisted-match-light-v1.modal.run/assisted-match
 &retail_id={st.session_state.retail_id_to_match}&cosine_distance={st.session_state.selected_distance}&max_price_var={st.session_state.selected_var_price}&\
 start_date_to_search={start_date_str}&start_time_to_search={default_time}&{format_retails_to_search}&competitors_only={competitors_only}&\
 pinecone_namespace={st.session_state.namespace}&active_skus={active_skus}'
+#st.write(url)
 
 if st.button('Buscar candidatos'):
     with st.spinner('Buscando candidatos.. (esto puede demorar dependiendo de la fecha seleccionada principalmente)'):
@@ -95,11 +96,13 @@ if st.button('Buscar candidatos'):
             response = requests.get(url)
             if response.status_code == 200:
                 data = response.json()
-                if len(data) > 0:
-                    #st.write(data)
-                    df = pd.DataFrame(data)
-                    print(f'candidates found with the selected parameters')
-                    st.dataframe(df)
+                if data:
+                    try:
+                        df = pd.DataFrame(data)
+                        print(f'candidates found with the selected parameters')
+                        st.dataframe(df)
+                    except:
+                        st.warning(f'No se han encontrado candidatos con los parámetros seleccionados')
                 else:
                     st.write('No se han encontrado candidatos con los parámetros seleccionados')
             else:

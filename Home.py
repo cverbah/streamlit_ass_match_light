@@ -102,9 +102,9 @@ if st.button('Buscar candidatos'):
                         print(f'candidates found with the selected parameters')
                         st.dataframe(df)
                     except:
-                        st.warning(f'No se han encontrado candidatos con los parámetros seleccionados')
+                        st.warning(f'No se han encontrado productos nuevos o candidatos con los parámetros seleccionados')
                 else:
-                    st.write('No se han encontrado candidatos con los parámetros seleccionados')
+                    st.write('No se han encontrado productos nuevos o candidatos con los parámetros seleccionados')
             else:
                 st.error({response.status_code})
         except Exception as e:

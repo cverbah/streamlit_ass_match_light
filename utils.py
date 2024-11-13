@@ -7,6 +7,7 @@ import re
 import time
 import mysql.connector
 
+
 # env
 load_dotenv()
 MYSQL_PASSWORD = os.environ["MYSQL_PASSWORD"]  # need to be changed

@@ -48,3 +48,4 @@ def run():
     target = shlex.quote(str(streamlit_script_remote_path))
     cmd = f"streamlit run {target} --server.port 8000 --server.enableCORS=false --server.enableXsrfProtection=false"
     subprocess.Popen(cmd, shell=True)
+

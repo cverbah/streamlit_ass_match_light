@@ -108,3 +108,6 @@ if st.button('Buscar candidatos'):
             st.error(f'Se ha producido un error: {e}')
 
 
+
+
+

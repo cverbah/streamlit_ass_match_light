@@ -3,6 +3,11 @@ import pandas as pd
 import os
 import numpy as np
 import requests
+from dotenv import load_dotenv
+
+# env
+load_dotenv()
+URL_MATCH_LIGHT = os.environ["URL_MATCH_LIGHT"]
 
 st.set_page_config(
     page_title="Match asistido light",
@@ -84,7 +89,7 @@ with st.sidebar:
 
 ## search
 
-url = f'https://adminreposgeti--assisted-match-light-v1.modal.run/assisted-matching-light-all-in-one?q_neighbours={st.session_state.selected_neighbours}&client_id={client_id}\
+url = f'https://{URL_MATCH_LIGHT}?q_neighbours={st.session_state.selected_neighbours}&client_id={client_id}\
 &retail_id={st.session_state.retail_id_to_match}&cosine_distance={st.session_state.selected_distance}&max_price_var={st.session_state.selected_var_price}&\
 start_date_to_search={start_date_str}&start_time_to_search={default_time}&{format_retails_to_search}&competitors_only={competitors_only}&\
 pinecone_namespace={st.session_state.namespace}&active_skus={active_skus}'

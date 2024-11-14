@@ -48,11 +48,11 @@ with st.sidebar:
 
     # retail to match
     retails = df_retails[df_retails.tipo == st.session_state.selected_type].name.unique().tolist() + ['']
-    st.session_state.selected_retail_to_match = st.selectbox('Retail a matchear:', retails)
+    st.session_state.selected_retail_to_match = st.selectbox('Retail a matchear:', sorted(retails))
     st.session_state.retail_id_to_match = df_retails[df_retails.name == st.session_state.selected_retail_to_match].retail_id.tolist()[0]
 
     # retails to search
-    retails_available = list(filter(lambda x: x != st.session_state.selected_retail_to_match, retails))
+    retails_available = sorted(list(filter(lambda x: x != st.session_state.selected_retail_to_match, retails)))
     st.session_state.selected_retails_to_search = st.multiselect('Retails a buscar:', retails_available)
     retails_to_search = df_retails[df_retails.name.isin(st.session_state.selected_retails_to_search)].retail_id.tolist()
     format_retails_to_search = ''.join([f'retails_to_search={i}&' for i in retails_to_search])

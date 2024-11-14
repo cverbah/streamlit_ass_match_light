@@ -47,7 +47,7 @@ with st.sidebar:
     st.session_state.selected_type = st.selectbox('Tipo retail:', retails_type)
 
     # retail to match
-    retails = df_retails[df_retails.tipo == st.session_state.selected_type].name.unique().tolist() + ['']
+    retails = df_retails[df_retails.tipo == st.session_state.selected_type].name.unique().tolist()
     st.session_state.selected_retail_to_match = st.selectbox('Retail a matchear:', sorted(retails))
     st.session_state.retail_id_to_match = df_retails[df_retails.name == st.session_state.selected_retail_to_match].retail_id.tolist()[0]
 
